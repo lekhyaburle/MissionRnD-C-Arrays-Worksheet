@@ -23,27 +23,28 @@ struct student {
 
 struct student ** topKStudents(struct student *students, int len, int K)
 {
-	int i = 0; 
-	struct student a[10];
-	if (len < 1 || students == NULL|| K < 0){ return NULL; }
+	int i = 0;
+	struct student t,*x;
+	if (len < 1 || students == NULL || K < 0){ return NULL; }
 	for (i = 0; i < len; i++)
 	{
 		if (students[i].score < students[i + 1].score)
 		{
-			a[i] = students[i];
+			t = students[i];
 			students[i] = students[i + 1];
-			students[i + 1] = a[i];
+			students[i + 1] = t;
 
 		}
 	}
-
-	for (i = 0; i < K ; i++)
+	
+	for (i = 0; i < K; i++)
 	{
-		a[i] = students[i];
+		x[i] = students[i];
 	}
 	for (i = 0; i < K; i++)
 	{
-		students[i] = a[i];
+		students[i] = x[i];
 	}
 	
 }
+
